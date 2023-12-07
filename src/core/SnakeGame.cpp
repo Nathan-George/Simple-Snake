@@ -9,13 +9,19 @@ SnakeGame::SnakeGame(ISnakeBehavior* snakeBehavior, int size, unsigned int seed)
 
     _pField = new Field(size);
     _pSnake = new Snake(snakeBehavior, *_pField, Location(0, 0));
-    _pApple = new Apple(*_pField, *_pSnake, _rand.get());
+    if (size > 1) {
+        _pApple = new Apple(*_pField, *_pSnake, _rand.get());
+    } else {
+        _pApple = nullptr;
+    }
 }
 
 SnakeGame::~SnakeGame() {
     delete _pField;
     delete _pSnake;
-    delete _pApple;
+    if (_pApple) {
+        delete _pApple;
+    }
 }
 
 void SnakeGame::step() {

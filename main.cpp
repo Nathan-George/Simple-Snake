@@ -14,6 +14,16 @@
 
 using namespace std;
 
+int read_int() {
+    int num = INT32_MIN;
+    do {
+        printf(": ");
+        scanf("%d", &num);
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    } while (num == INT32_MIN);
+    return num;
+}
+
 void run_snake_game(int fieldSize, int seed) {
     ISnakeBehavior* behavior;
 
@@ -213,9 +223,7 @@ int main(int argc, char*argv[]) {
         printf("4) Judge SnakeSubmission\n");
         int choice(0);
         do {
-            printf(": ");
-            scanf("%d", &choice);
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            choice = read_int();
         } while(choice < 1 || choice > 3);
         printf("\n");
         
@@ -238,15 +246,15 @@ int main(int argc, char*argv[]) {
         if (runType != GenerateSubmission) {
             printf("Enter the field size");
             do {
-                printf(": ");
-                scanf("%d", &fieldSize);
+                fieldSize = read_int();
             } while (fieldSize <= 0);
             printf("Enter the seed");
             do {
-                printf(": ");
-                scanf("%d", &seed);
+                seed = read_int();
             } while (seed < 0);
         }
+
+        printf("\n");
 
     } else {
         int i = 1;
