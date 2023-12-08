@@ -76,6 +76,5 @@ void draw_snake(AsciiCanvas& canvas, const Snake& snake) {
 }
 
 void draw_apple(AsciiCanvas& canvas, const Apple& apple) {
-    //canvas.at(apple.getLocation().x, apple.getLocation().y) = "🍎";
-    canvas.at(apple.getLocation().x, apple.getLocation().y) = " a";
+    canvas.at(apple.getLocation().x, apple.getLocation().y) = "🍎";
 }
